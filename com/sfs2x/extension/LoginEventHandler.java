@@ -29,7 +29,7 @@ public class LoginEventHandler extends BaseServerEventHandler
     @Override
     public void handleServerEvent(ISFSEvent event) throws SFSException
     {
-        // Grab parameters from client request
+        // Get parameters from client request
         String userName = (String) event.getParameter(SFSEventParam.LOGIN_NAME);
         String encryptedPwd = (String) event.getParameter(SFSEventParam.LOGIN_PASSWORD);
         ISession session = (ISession) event.getParameter(SFSEventParam.SESSION);
@@ -44,7 +44,7 @@ public class LoginEventHandler extends BaseServerEventHandler
 
             // Build a prepared statement
             PreparedStatement preStatement = connection.prepareStatement(
-                    "SELECT Password, Zone FROM player_info WHERE Username = ?"
+                    "SELECT Password, Zone FROM Player WHERE Username = ?"
             );
             preStatement.setString(1, userName);
 

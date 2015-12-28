@@ -6,22 +6,21 @@ package com.sfs2x.extension;
 import java.util.HashSet;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
-import com.smartfoxserver.bitswarm.sessions.ISession;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import com.smartfoxserver.v2.entities.User;
-import com.smartfoxserver.v2.entities.data.ISFSArray;
-import com.smartfoxserver.v2.entities.data.ISFSObject;
-import com.smartfoxserver.v2.entities.data.SFSArray;
-import com.smartfoxserver.v2.entities.data.SFSObject;
-
-import com.sfs2x.extension.*;
+import com.smartfoxserver.v2.db.IDBManager;
+import com.smartfoxserver.v2.exceptions.SFSErrorCode;
+import com.smartfoxserver.v2.exceptions.SFSErrorData;
 
 
 public class Channel {
     private ChatSystemExtension extension;
 
     private HashMap<Integer, ActivePlayer> players = new HashMap<Integer, ActivePlayer>();
-    private HashSet<Recipe> recipes = new HashSet<Recipe>();
+    private HashSet<Receiver> recipes = new HashSet<Receiver>();
 
 
     public Channel(ChatSystemExtension _extension) {
@@ -30,7 +29,7 @@ public class Channel {
         extension.trace("channel created!.");
 
         try {
-            loadRecipes();
+            loadReceivers();
         } catch (Exception e) {
             extension.trace(e.getMessage());
         }
@@ -87,5 +86,28 @@ public class Channel {
             return null;
         players.remove(user.getId());
         return player;
+    }
+
+    public void loadReceivers() {
+
+        IDBManager dbManager = extension.getParentZone().getDBManager();
+        Connection connection;
+        try {
+            // Grab a connection from the DBManager connection pool
+            connection = dbManager.getConnection();
+
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT username FROM users ORDER BY TemplateID ASC"
+            );
+            // Execute query
+            ResultSet result = stmt.executeQuery();
+
+        } catch (SQLException e) {
+            SFSErrorData errData = new SFSErrorData(SFSErrorCode.GENERIC_ERROR);
+            errData.addParameter("SQL Error: " + e.getMessage());
+            extension.trace("A SQL Error occurred: " + e.getMessage());
+        }
+
+
     }
 }
