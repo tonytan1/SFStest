@@ -9,7 +9,6 @@ package com.sfs2x.extension;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.sfs2x.extension.ChatSystemExtension;
 import com.smartfoxserver.v2.core.ISFSEvent;
 import com.smartfoxserver.v2.core.SFSEventParam;
 import com.smartfoxserver.v2.entities.User;
