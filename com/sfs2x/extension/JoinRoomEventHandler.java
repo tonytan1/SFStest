@@ -16,10 +16,10 @@ public class JoinRoomEventHandler extends BaseServerEventHandler {
     @Override
     public void handleServerEvent(ISFSEvent event) throws SFSException {
         Room room = (Room) event.getParameter(SFSEventParam.ROOM);
-        User user = (User) event.getParameter(SFSEventParam.USER);
+        User username = (User) event.getParameter(SFSEventParam.USER);
 
         trace(" JoinRoomEventHandler got room: " + room);
-        trace(" JoinRoomEventHandler got user: " + user);
+        trace(" JoinRoomEventHandler got user: " + username);
 
     }
 

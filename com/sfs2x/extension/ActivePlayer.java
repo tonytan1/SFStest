@@ -15,16 +15,14 @@ public class ActivePlayer
     private int ID = 0;
     private String name = "";
 
-    public ActivePlayer(User _sfsUser, Channel _channel)
-    {
+    public ActivePlayer(User _sfsUser, Channel _channel) {
         sfsUser = _sfsUser;
         channel = _channel;
         ID = sfsUser.getId();
 
     }
 
-    public User getSfsUser()
-    {
+    public User getSfsUser(){
         return sfsUser;
     }
 

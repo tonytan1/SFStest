@@ -20,6 +20,10 @@ package com.sfs2x.extension;
             User currentUser = (User) event.getParameter(SFSEventParam.USER);
             ISession session = currentUser.getSession();
             String username = currentUser.getName();
+            Zone zone = currentUser.getZone();
+
+            trace(" JoinZoneEventHandler got room: " + zone);
+            trace(" JoinZoneEventHandler got user: " + username);
         }
 
 

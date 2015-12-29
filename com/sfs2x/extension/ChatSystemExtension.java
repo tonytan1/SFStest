@@ -1,31 +1,23 @@
-package com.sfs2x.extension; /**
+package com.sfs2x.extension;
+
+/**
  * Created by tonytan on 23/12/2015.
+ *
  */
 import com.smartfoxserver.v2.core.SFSEventType;
-import com.smartfoxserver.v2.entities.Zone;
-import com.smartfoxserver.v2.entities.User;
-import com.smartfoxserver.v2.entities.Room;
-
 import com.smartfoxserver.v2.extensions.SFSExtension;
 
-import java.nio.channels.SocketChannel;
-import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
+
 public class ChatSystemExtension extends SFSExtension {
 
-    //private ExtensionHelper helper;
-    private Zone currentZone;
-    private String publicMessage = "public";//公共聊天信息
-    private String privateMessage = "private";//私人聊天信息
-    LinkedList<SocketChannel> recipients;
     private List<Chat> chatLog = new ArrayList<Chat>();
     private List<Chat> pmLog = new ArrayList<Chat>();
-
+    private Channel channel;
     @Override
     public void init(){
-        Channel channel = new Channel(this);
-        recipients=new LinkedList<SocketChannel>();
+        channel = new Channel(this);
         initEventHandlers();
 
     }
@@ -82,6 +74,9 @@ public class ChatSystemExtension extends SFSExtension {
         pmLog.clear();
     }
 
+    public Channel getChannel() {
+        return channel;
+    }
 }
 
 

@@ -2,6 +2,7 @@ package com.sfs2x.extension;
 
 /**
  * Created by tonytan on 25/12/2015.
+ *
  */
 import java.util.HashSet;
 import java.util.Collection;
@@ -20,13 +21,12 @@ public class Channel {
     private ChatSystemExtension extension;
 
     private HashMap<Integer, ActivePlayer> players = new HashMap<Integer, ActivePlayer>();
-    private HashSet<Receiver> recipes = new HashSet<Receiver>();
+    private HashSet<Receiver> recivers = new HashSet<Receiver>();
 
 
     public Channel(ChatSystemExtension _extension) {
         extension = _extension;
-
-        extension.trace("channel created!.");
+        extension.trace("channel created!");
 
         try {
             loadReceivers();
@@ -97,7 +97,7 @@ public class Channel {
             connection = dbManager.getConnection();
 
             PreparedStatement stmt = connection.prepareStatement(
-                    "SELECT username FROM users ORDER BY TemplateID ASC"
+                    "SELECT username FROM users "
             );
             // Execute query
             ResultSet result = stmt.executeQuery();

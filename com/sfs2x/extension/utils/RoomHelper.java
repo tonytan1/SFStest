@@ -2,6 +2,7 @@ package com.sfs2x.extension.utils;
 
 /**
  * Created by tonytan on 25/12/2015.
+ *
  */
 
 import com.smartfoxserver.v2.entities.Room;

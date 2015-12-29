@@ -12,6 +12,7 @@ import com.smartfoxserver.v2.exceptions.SFSException;
 import com.smartfoxserver.v2.extensions.BaseServerEventHandler;
 /**
  * Created by tonytan on 28/12/2015.
+ *
  */
 
 
