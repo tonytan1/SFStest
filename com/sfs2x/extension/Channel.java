@@ -19,9 +19,7 @@ import com.smartfoxserver.v2.exceptions.SFSErrorData;
 
 public class Channel {
     private ChatSystemExtension extension;
-
     private HashMap<Integer, ActivePlayer> players = new HashMap<Integer, ActivePlayer>();
-    private HashSet<Receiver> recivers = new HashSet<Receiver>();
 
 
     public Channel(ChatSystemExtension _extension) {

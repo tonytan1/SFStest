@@ -17,7 +17,7 @@ public class MoveRequestHandler extends BaseClientRequestHandler {
     @Override
     public void handleClientRequest(User user, ISFSObject params) {
 
-        trace("MoveRequestHandler got : " + user);
+        trace("MoveRequestHandler ogt: " + user);
 
         Room room = user.getLastJoinedRoom();
 
@@ -25,7 +25,7 @@ public class MoveRequestHandler extends BaseClientRequestHandler {
 
         List<User> users = room.getUserList();
 
-        //remove the sender
+        //remove the user
         users.remove(user);
 
         send("move", params, users);
