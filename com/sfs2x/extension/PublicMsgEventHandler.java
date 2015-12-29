@@ -33,5 +33,6 @@ public class PublicMsgEventHandler extends BaseServerEventHandler
 
         Chat newChat = new Chat(currentRoom.getName(), user.getName(), message, time);
         ((ChatSystemExtension) getParentExtension()).addToChatLog(newChat);
+
     }
 }

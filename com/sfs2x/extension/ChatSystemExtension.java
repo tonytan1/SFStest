@@ -28,6 +28,9 @@ public class ChatSystemExtension extends SFSExtension {
     }
 
     private void initEventHandlers() {
+        //move to another channel
+        addRequestHandler("move", MoveRequestHandler.class);
+
         //Login event
         this.addEventHandler(SFSEventType.USER_LOGIN,      LoginEventHandler.class);
         //join zone event
